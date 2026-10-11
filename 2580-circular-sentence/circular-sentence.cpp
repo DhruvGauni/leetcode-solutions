@@ -1,14 +1,10 @@
 class Solution {
 public:
-    bool isCircularSentence(string sentence) {
-        int n = sentence.size();
-        if(sentence[0] == ' ' || sentence[n-1] == ' ') return false;
-        else if(sentence[0] != sentence[n-1]) return false;
-        for(int i = 0;i<n;i++){
-            if(sentence[i] == ' '){
-                if(sentence[i-1] != sentence[i+1]) return false;
-                else continue;
-            }
+    bool isCircularSentence(string s) {
+        int n = s.size();
+        if (s[0] != s[n-1]) return false;
+        for (int i = 1; i < n - 1; i++) {
+            if (s[i] == ' ' && s[i-1] != s[i+1]) return false;
         }
         return true;
     }
