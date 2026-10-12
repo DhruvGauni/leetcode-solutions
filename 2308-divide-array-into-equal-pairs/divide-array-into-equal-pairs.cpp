@@ -1,13 +1,18 @@
 class Solution {
 public:
     bool divideArray(vector<int>& nums) {
-        int arr[501] = {0};
+        bool arr[501] = {false};
+        int count = 0;
         for(auto& i : nums){
-            arr[i]++;
+            if(arr[i]){
+                count--;
+                arr[i] = false;
+            }
+            else{
+                count++;
+                arr[i] = true;
+            }
         }
-        for(auto& i : arr){
-            if(i%2!=0) return false;
-        }
-        return true;
+        return count == 0;
     }
 };
