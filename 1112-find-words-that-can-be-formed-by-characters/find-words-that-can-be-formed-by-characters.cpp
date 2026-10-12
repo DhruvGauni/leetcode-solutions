@@ -7,6 +7,7 @@ public:
         }
         int total = 0;
         for(auto& i : words){
+            if (i.size() > chars.size()) continue;
             int temp[26];
             copy(arr,arr+26,temp);
             bool good = true;
