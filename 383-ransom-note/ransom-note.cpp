@@ -1,17 +1,13 @@
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
-        int freq[26] = {0};
-        for (int i = 0; i < magazine.size(); i++) {
-            freq[magazine[i] - 'a']++;
-        }
-        for (int i = 0; i < ransomNote.size(); i++) {
-            int idx = ransomNote[i] - 'a';
-            freq[idx]--;
+        if (ransomNote.size() > magazine.size()) return false;  // quick reject
 
-            if (freq[idx] < 0) {
-                return false; 
-            }
+        int freq[26] = {0};
+        for (char c : magazine) freq[c - 'a']++;
+
+        for (char c : ransomNote) {
+            if (--freq[c - 'a'] < 0) return false;
         }
         return true;
     }
