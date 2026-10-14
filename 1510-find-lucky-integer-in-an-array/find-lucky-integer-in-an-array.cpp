@@ -1,14 +1,13 @@
 class Solution {
 public:
     int findLucky(vector<int>& arr) {
-        unordered_map<int,int> mpp;
+        int mpp[501] = {0};
         for(auto& i : arr){
             mpp[i]++;
         }
-        int mx = -1;
-        for(auto& i : mpp){
-            if(i.second == i.first) mx = max(mx,i.first);
+        for(int j = 500;j>0;j--){
+            if(mpp[j] == j) return j;
         }
-        return mx;
+        return -1;
     }
 };
