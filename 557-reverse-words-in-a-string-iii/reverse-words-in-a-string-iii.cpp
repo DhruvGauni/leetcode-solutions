@@ -3,20 +3,15 @@ public:
     string reverseWords(string s) {
         int n = s.size();
         int l = 0;
-        for(int i = 0;i<n;i++){
-            if(s[i] == ' ' || i == n-1){
-                int r = i-1;
-                if(i == n-1){
-                    r = r+1;
+        for (int i = 0; i <= n; i++) {
+            if (i == n || s[i] == ' ') {
+                int a = l, b = i - 1;
+                while (a < b) {
+                    swap(s[a], s[b]);
+                    a++;
+                    b--;
                 }
-                while(l<r){
-                    swap(s[l],s[r]);
-                    l++;
-                    r--;
-                }
-                if(i != n-1){
-                    l = i+1;
-                }
+                l = i + 1;
             }
         }
         return s;
