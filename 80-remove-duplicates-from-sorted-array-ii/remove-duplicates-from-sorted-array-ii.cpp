@@ -1,21 +1,21 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        int i = 0, j = 0;
+        int i = 0,j=0;
         int n = nums.size();
-        while (i < n) {
-            int val = nums[i];
-            int count = 0;
-            while (i < n && nums[i] == val) {   // consume the whole group
-                count++;
+        while(i<n){
+            nums[j] = nums[i];
+            i++;
+            j++;
+            if(i<n && nums[i] == nums[i-1]){
+                nums[j] = nums[i];
                 i++;
-            }
-            count = min(2, count);              // keep at most 2
-            while (count > 0) {
-                nums[j] = val;
+                while(i<n && nums[i] == nums[j]){
+                    i++;
+                }
                 j++;
-                count--;
             }
+           
         }
         return j;
     }
